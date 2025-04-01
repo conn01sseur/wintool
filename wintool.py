@@ -113,7 +113,7 @@ def main():
     print('''    [[blue]2[/blue]] - [yellow]Optimization windows[/yellow]  | [bright_black]Отключение ненужных служб[/bright_black]''')
     print('''    [[blue]3[/blue]] - [yellow]Activation windows[/yellow]    | [bright_black]Активация Windows[/bright_black]''')
     print()
-    print('''    [red]GitHub[/red] --> https://github.com/FotoKoyo''')
+    print('''    [red]GitHub[/red] --> https://github.com/conn01sseur/''')
     print()
 
     a = input("  --> ")
