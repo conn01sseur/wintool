@@ -145,7 +145,7 @@ def main():
             print('''    [[blue]12[/blue]] - [yellow]7-zip[/yellow]''')
             print('''    [[blue]13[/blue]] - [yellow]qBittorrent[/yellow]''')
             print()
-            print('''    [[red]bb[/red]]''')
+            print('''    [[red]bb[/red]] [purple]Back to the main menu[/purple]''')
             print()
             c = int(input("  --> "))
             if c == "1":
