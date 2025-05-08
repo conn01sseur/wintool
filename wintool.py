@@ -145,6 +145,9 @@ def main():
             print('''    [[blue]12[/blue]] - [yellow]7-zip[/yellow]''')
             print('''    [[blue]13[/blue]] - [yellow]qBittorrent[/yellow]''')
             print()
+            print('''           [cyan]Other[/cyan]''')
+            print('''    [[blue]oo[/blue]] - [yellow]Install other program[/yellow]''')
+            print()
             print('''    [[red]bb[/red]] - [red]Back to the main menu[/red]''')
             print()
             c = int(input("  --> "))
@@ -174,6 +177,9 @@ def main():
                 os.system("choco install 7zip")
             elif c == "13":
                 os.system("choco install qbittorrent")
+            elif c == "oo":
+                other_program = input("choco install  --> ")
+                os.system(f"choco install {other_program}")
             elif c == "bb":
                 main()
             main()
