@@ -379,9 +379,9 @@ def main():
             sleep(10)
             sys.exit()
         print()
-        print('''    [yellow]Choose your Windows(hit) version[/yellow]''')
+        print('''    [yellow]Choose your Window[brown]s(hit)[/brown] version[/yellow]''')
         print()
-        a = input()
+        print('''    [[blue]1[/blue]] Windows 10''')
         if get_winvers() == "Windows 10 Pro":
             try:
                 os.system("slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX")
