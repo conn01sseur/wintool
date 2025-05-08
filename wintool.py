@@ -152,34 +152,91 @@ def main():
             print()
             c = int(input("  --> "))
             if c == "1":
-                os.system("choco install Discord")
+                try:
+                    os.system("choco install Discord")
+                except:
+                    print('''    [red]ОШИБКА ПРИ УСТАНОВКЕ[/red]''')
+                    main()
             elif c == "2":
-                os.system("choco install telegram")
+                try:
+                    os.system("choco install telegram")
+                except:
+                    print('''    [red]ОШИБКА ПРИ УСТАНОВКЕ[/red]''')
+                    main()
             elif c == "3":
-                os.system("choco install Steam")
+                try:
+                    os.system("choco install Steam")
+                except:
+                    print('''    [red]ОШИБКА ПРИ УСТАНОВКЕ[/red]''')
+                    main()
             elif c == "4":
-                os.system("choco install epicgameslauncher")
+                try:
+                    os.system("choco install epicgameslauncher")
+                except:
+                    print('''    [red]ОШИБКА ПРИ УСТАНОВКЕ[/red]''')
+                    main()
             elif c == "5":
-                os.system("choco install FireFox")
+                try:
+                    os.system("choco install FireFox")
+                except:
+                    print('''    [red]ОШИБКА ПРИ УСТАНОВКЕ[/red]''')
+                    main()
             elif c == "6":
-                os.system("choco install tor-browser")
+                try:
+                    os.system("choco install tor-browser")
+                except:
+                    print('''    [red]ОШИБКА ПРИ УСТАНОВКЕ[/red]''')
+                    main()
             elif c == "7":
-                os.system("choco install chrome")
+                try:
+                    os.system("choco install chrome")
+                except:
+                    print('''    [red]ОШИБКА ПРИ УСТАНОВКЕ[/red]''')
+                    main()
             elif c == "8":
-                os.system("choco install yandex")
+                try:
+                    os.system("choco install yandex")
+                except:
+                    print('''    [red]ОШИБКА ПРИ УСТАНОВКЕ[/red]''')
+                    main()
             elif c == "9":
-                os.system("choco install opera")
+                try:
+                    os.system("choco install opera")
+                except:
+                    print('''    [red]ОШИБКА ПРИ УСТАНОВКЕ[/red]''')
+                    main()
             elif c == "10":
-                os.system("choco install brave")
+                try:
+                    os.system("choco install brave")
+                except:
+                    print('''    [red]ОШИБКА ПРИ УСТАНОВКЕ[/red]''')
+                    main()
             elif c == "11":
-                os.system("choco install vivaldi")
+                try:
+                    os.system("choco install vivaldi")
+                except:
+                    print('''    [red]ОШИБКА ПРИ УСТАНОВКЕ[/red]''')
+                    main()
             elif c == "12":
-                os.system("choco install 7zip")
+                try:
+                    os.system("choco install 7zip")
+                except:
+                    print('''    [red]ОШИБКА ПРИ УСТАНОВКЕ[/red]''')
+                    main()
             elif c == "13":
-                os.system("choco install qbittorrent")
+                try:
+                    os.system("choco install qbittorrent")
+                except:
+                    print('''    [red]ОШИБКА ПРИ УСТАНОВКЕ[/red]''')
+                    main()
             elif c == "oo":
-                other_program = input("choco install  --> ")
-                os.system(f"choco install {other_program}")
+                try:
+                    other_program = input("choco install  --> ")
+                    print('''   [green]Choco already install this program[/green]''')
+                    os.system(f"choco install {other_program}")
+                except:
+                    print('''    [red]ОШИБКА ПРИ УСТАНОВКЕ[/red]''')
+                    main()
             elif c == "bb":
                 main()
             main()
