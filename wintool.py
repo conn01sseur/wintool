@@ -370,6 +370,7 @@ def main():
                 winreg.CloseKey(key)
 
     elif a == "3":
+        print('''''')
         if get_winvers() == "Windows 10 Pro":
             try:
                 os.system("slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX")
