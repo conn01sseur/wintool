@@ -480,7 +480,6 @@ def main():
         elif windows_activation == "4":
             print("Пока нету :(")
             sleep(10)
-
     main()
 
 if __name__ == "__main__":
