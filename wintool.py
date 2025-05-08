@@ -392,7 +392,10 @@ def main():
                 os.system("slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX")
             except:
                 os.system("slmgr /ipk 8N67H-M3CY9-QT7C4-2TR7M-TXYCV")
-            os.system("slmgr /skms kms.digiboy.ir")
+            try:
+                os.system("slmgr /skms kms.digiboy.ir")
+            except:
+                os.system("slmgr /skms zh.us.to")
             os.system("slmgr /ato")
 
         elif windows_activation == "2":
@@ -400,7 +403,10 @@ def main():
                 os.system("slmgr /ipk TX9XD-98N7V-6WMQ6-BX7FG-H8Q99")
             except:
                 os.system("slmgr /ipk 7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH")
-            os.system("slmgr /skms kms.digiboy.ir")
+            try:
+                os.system("slmgr /skms kms.digiboy.ir")
+            except:
+                os.system("slmgr /skms zh.us.to")
             os.system("slmgr /ato")
 
         elif windows_activation == "3":
@@ -408,7 +414,10 @@ def main():
                 os.system("slmgr /ipk MH37W-N47XK-V7XM9-C7227-GCQG9")
             except:
                 os.system("slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX")
-            os.system("slmgr /skms kms.digiboy.ir")
+            try:
+                os.system("slmgr /skms kms.digiboy.ir")
+            except:
+                os.system("slmgr /skms zh.us.to")
             os.system("slmgr /ato")
 
         elif windows_activation == "4":
