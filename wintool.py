@@ -381,34 +381,40 @@ def main():
         print()
         print('''    [yellow]Choose your Window[brown]s(hit)[/brown] version[/yellow]''')
         print()
-        print('''    [[blue]1[/blue]] Windows 10''')
-        if get_winvers() == "Windows 10 Pro":
-            try:
-                os.system("slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX")
-            except:
-                os.system("slmgr /ipk 8N67H-M3CY9-QT7C4-2TR7M-TXYCV")
-            os.system("slmgr /skms kms.digiboy.ir")
-            os.system("slmgr /ato")
+        print('''    [[blue]1[/blue]] - [yellow]Windows 10 Pro[/yellow]''')
+        print()
+        windows_activation = int(input("  --> "))
+        if windows_activation == "1":
+            if get_winvers() == "Windows 10 Pro":
+                try:
+                    os.system("slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX")
+                except:
+                    os.system("slmgr /ipk 8N67H-M3CY9-QT7C4-2TR7M-TXYCV")
+                os.system("slmgr /skms kms.digiboy.ir")
+                os.system("slmgr /ato")
 
-        elif get_winvers() == "Windows 10 Home":
-            try:
-                os.system("slmgr /ipk TX9XD-98N7V-6WMQ6-BX7FG-H8Q99")
-            except:
-                os.system("slmgr /ipk 7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH")
-            os.system("slmgr /skms kms.digiboy.ir")
-            os.system("slmgr /ato")
+        elif windows_activation == "2":
+            elif get_winvers() == "Windows 10 Home":
+                try:
+                    os.system("slmgr /ipk TX9XD-98N7V-6WMQ6-BX7FG-H8Q99")
+                except:
+                    os.system("slmgr /ipk 7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH")
+                os.system("slmgr /skms kms.digiboy.ir")
+                os.system("slmgr /ato")
 
-        elif get_winvers() == "Windows 11 Pro":
-            try:
-                os.system("slmgr /ipk MH37W-N47XK-V7XM9-C7227-GCQG9")
-            except:
-                os.system("slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX")
-            os.system("slmgr /skms kms.digiboy.ir")
-            os.system("slmgr /ato")
+        elif windows_activation == "3":
+            elif get_winvers() == "Windows 11 Pro":
+                try:
+                    os.system("slmgr /ipk MH37W-N47XK-V7XM9-C7227-GCQG9")
+                except:
+                    os.system("slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX")
+                os.system("slmgr /skms kms.digiboy.ir")
+                os.system("slmgr /ato")
 
-        elif get_winvers() == "Windows 11 Home":
-            print("Пока нету :(")
-            sleep(10)
+        elif windows_activation == "4":
+            elif get_winvers() == "Windows 11 Home":
+                print("Пока нету :(")
+                sleep(10)
 
     main()
 
