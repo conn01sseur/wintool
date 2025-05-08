@@ -370,7 +370,18 @@ def main():
                 winreg.CloseKey(key)
 
     elif a == "3":
-        print('''''')
+        os.system("cls")
+        print()
+        if check_admin():
+            pass
+        else:
+            print("[red]ЗАПУСТИ ПРОГРАММУ ОТ ИМЕНИ АДМИНИСТРАТОРА[/red]")
+            sleep(10)
+            sys.exit()
+        print()
+        print('''    [yellow]Choose your Windows(hit) version[/yellow]''')
+        print()
+        a = input()
         if get_winvers() == "Windows 10 Pro":
             try:
                 os.system("slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX")
