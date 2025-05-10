@@ -1,8 +1,6 @@
 from time import sleep
 from rich import *
 import os
-import random
-import wmi
 import winreg
 import subprocess
 import ctypes
@@ -483,7 +481,16 @@ def main():
             os.system("slmgr /ato")
 
         elif windows_activation == "4":
-            print("Пока нету :(")
+            try:
+                os.system("slmgr /ipk YTMG3-N6DKC-DKB77-7M9GH-8HVX7")
+            except:
+                os.system("slmgr /ipk TX9XD-98N7V-6WMQ6-BX7FG-H8Q99")
+            try:
+                os.system("slmgr /skms kms.digiboy.ir")
+            except:
+                os.system("slmgr /skms zh.us.to")
+            os.system("slmgr /ato")
+
             sleep(10)
     main()
 
