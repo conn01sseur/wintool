@@ -66,18 +66,70 @@ def get_winvers():
     osvi = OSVERSIONINFOEXW()
     osvi.dwOSVersionInfoSize = ctypes.sizeof(OSVERSIONINFOEXW)
     retcode = ctypes.windll.Ntdll.RtlGetVersion(ctypes.byref(osvi))
-    if retcode == 0:
-        major_version = osvi.dwMajorVersion
-        minor_version = osvi.dwMinorVersion
-        product_type = osvi.wProductType
-        if major_version == 10 and product_type == 1:
-            return "Windows 10 Pro"
-        elif major_version == 11 and product_type == 1:
-            return "Windows 11 Home"
-        else:
-            return f"Windows {major_version}"
-    else:
-        pass
+    
+    if retcode != 0:
+        return "Unknown Windows Version"
+    
+    major = osvi.dwMajorVersion
+    minor = osvi.dwMinorVersion
+    product_type = osvi.wProductType
+
+    try:
+        reg_path = r"SOFTWARE\Microsoft\Windows NT\CurrentVersion"
+        with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, reg_path) as key:
+            product_name = winreg.QueryValueEx(key, "ProductName")[0]
+            edition_id = winreg.QueryValueEx(key, "EditionID")[0] if "EditionID" in [winreg.EnumValue(key, i)[0] for i in range(winreg.QueryInfoKey(key)[1])] else ""
+            display_version = winreg.QueryValueEx(key, "DisplayVersion")[0] if "DisplayVersion" in [winreg.EnumValue(key, i)[0] for i in range(winreg.QueryInfoKey(key)[1])] else ""
+    except:
+        product_name = ""
+        edition_id = ""
+        display_version = ""
+
+    version_map = {
+        (10, 0): "Windows 10" if major == 10 and minor == 0 else "",
+        (6, 3): "Windows 8.1",
+        (6, 2): "Windows 8",
+        (6, 1): "Windows 7",
+        (6, 0): "Windows Vista",
+        (5, 2): "Windows Server 2003" if product_type == 1 else "Windows XP x64",
+        (5, 1): "Windows XP",
+        (5, 0): "Windows 2000"
+    }
+
+    base_version = version_map.get((major, minor), f"Windows {major}.{minor}")
+
+    if major == 10 and minor == 0:
+        if "Pro" in product_name:
+            base_version = "Windows 10 Pro"
+        elif "Home" in product_name:
+            base_version = "Windows 10 Home"
+        elif "Enterprise" in product_name:
+            base_version = "Windows 10 Enterprise"
+        elif "Education" in product_name:
+            base_version = "Windows 10 Education"
+        elif "LTSC" in product_name:
+            base_version = "Windows 10 LTSC"
+
+    if major == 10 and minor >= 0 and osvi.dwBuildNumber >= 22000:
+        base_version = base_version.replace("10", "11")
+        if "Pro" in product_name:
+            base_version = "Windows 11 Pro"
+        elif "Home" in product_name:
+            base_version = "Windows 11 Home"
+        elif "Enterprise" in product_name:
+            base_version = "Windows 11 Enterprise"
+        elif "Education" in product_name:
+            base_version = "Windows 11 Education"
+
+    build_info = f" (Build {osvi.dwBuildNumber}"
+    if display_version:
+        build_info += f", {display_version}"
+    build_info += ")"
+    
+    if edition_id and edition_id not in base_version:
+        base_version += f" {edition_id}"
+    
+    return base_version + build_info
 
 def check_choco():
     try:
