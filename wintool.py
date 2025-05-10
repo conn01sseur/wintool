@@ -7,6 +7,41 @@ import ctypes
 from ctypes import wintypes
 import sys
 
+import ctypes
+import subprocess
+
+def set_cmd_window_size(width=120, height=30, buffer_height=9001):
+    try:
+        kernel32 = ctypes.windll.kernel32
+        h_console = kernel32.GetStdHandle(-11)
+
+        class CONSOLE_SCREEN_BUFFER_INFOEX(ctypes.Structure):
+            _fields_ = [
+                ("cbSize", ctypes.c_ulong),
+                ("dwSize", ctypes.c_ushort * 2),
+                ("dwCursorPosition", ctypes.c_ushort * 2),
+                ("wAttributes", ctypes.c_ushort),
+                ("srWindow", ctypes.c_short * 4),
+                ("dwMaximumWindowSize", ctypes.c_ushort * 2),
+                ("wPopupAttributes", ctypes.c_ushort),
+                ("bFullscreenSupported", ctypes.c_bool),
+                ("ColorTable", ctypes.c_ulong * 16)
+            ]
+
+        csbi = CONSOLE_SCREEN_BUFFER_INFOEX()
+        csbi.cbSize = ctypes.sizeof(CONSOLE_SCREEN_BUFFER_INFOEX)
+
+        if kernel32.GetConsoleScreenBufferInfoEx(h_console, ctypes.byref(csbi)):
+            csbi.dwSize = (width, buffer_height)
+            csbi.srWindow = (0, 0, width - 1, height - 1)
+            
+            kernel32.SetConsoleScreenBufferInfoEx(h_console, ctypes.byref(csbi))
+            print(f"Размер окна: {width}x{height}, буфер: {buffer_height} строк")
+        else:
+            print("Ошибка: Не удалось изменить размер консоли")
+    except Exception as e:
+        print(f"Ошибка: {e}")
+
 def winact():
     try:
         result = subprocess.run(['cscript', '//Nologo', os.path.expandvars('%windir%\\system32\\slmgr.vbs'), '/dli'], 
@@ -547,4 +582,5 @@ def main():
     main()
 
 if __name__ == "__main__":
+    set_cmd_window_size(70, 25, 5000)
     main()
