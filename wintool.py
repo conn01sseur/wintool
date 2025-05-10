@@ -471,7 +471,7 @@ def main():
 
         elif windows_activation == "3":
             try:
-                os.system("slmgr /ipk MH37W-N47XK-V7XM9-C7227-GCQG9")
+                os.system("slmgr /ipk VK7JG-NPHTM-C97JM-9MPGT-3V66T")
             except:
                 os.system("slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX")
             try:
