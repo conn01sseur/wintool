@@ -11,14 +11,19 @@ import sys
 
 def winact():
     try:
-        c = wmi.WMI()
-        for os in c.Win32_OperatingSystem():
-            if os.Name.startswith("Microsoft Windows"):
-                if os.Description == "Windows(R) Operating System" and os.BuildNumber > "9600":
-                    return "[blue]Activated[/blue]"
-        return "[red]Not activated[/red]"
+        result = subprocess.run(['cscript', '//Nologo', os.path.expandvars('%windir%\\system32\\slmgr.vbs'), '/dli'], 
+                              capture_output=True, text=True)
+        output = result.stdout.lower()
+        
+        if "licensed" in output or "активирована" in output:
+            return "[blue]Activated[/blue]"
+        elif "license status: licensed" in output:
+            return "[blue]Activated[/blue]"
+        else:
+            return "[red]Not activated[/red]"
     except Exception as e:
-        pass
+        print(f"Activation check error: {e}")
+        return "[red]Error checking activation[/red]"
 
 def check_defender():
     try:
